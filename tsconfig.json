@@ -4,7 +4,11 @@
         "noImplicitAny": true,
         "module": "commonjs",
         "target": "es5",
-        "jsx": "react"
+        "jsx": "react",
+        "baseUrl": "src",
+        "paths": {
+            "components/*": ["components/*"]
+        }
     },
     "exclude": [
         "dist",

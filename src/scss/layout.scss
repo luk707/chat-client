@@ -1,0 +1,23 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.flex {
+    flex-grow: 1;
+}
+
+.alignCenter {
+    align-self: center;
+}
+
+.padded {
+    padding: 15px;
+}

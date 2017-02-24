@@ -1,0 +1,54 @@
+@import "./colors";
+
+.navbarContainer {
+    width: 44px;
+    z-index: 5;
+}
+
+.navbarCollapse {
+    display: flex;
+    flex-direction: column;
+    width: 44px;
+    height: 100%;
+    overflow: hidden;
+    background-color: $neutral;
+    transition-duration: 0.25s;
+    -webkit-transition-duration: 0.25s;
+    &.open {
+        width: 200px;
+    }
+}
+
+.navbarButton {
+    display: flex;
+    padding: 0;
+    height: 44px;
+    width: 200px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $neutral;
+    transition-duration: 0.1s;
+    -webkit-transition-duration: 0.1s;
+    &.menu {
+        & .content * {
+            font-weight: 900;
+        }
+    }
+    & .icon {
+        width: 44px;
+        justify-content: center;
+        font-size: 18px;
+        & * {
+            align-self: center;
+        }
+    }
+    & .content {
+        align-self: center;
+        flex-grow: 1;
+        display: flex;
+    }
+    &:hover {
+        background-color: $carbon;
+    }
+}

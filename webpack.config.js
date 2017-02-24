@@ -23,8 +23,8 @@ module.exports = {
             { test: /\.tsx?$/,  loader: "ts-loader" },
             { test: /\.scss$/, loader: ExtractTextPlugin.extract({
                 fallback: "style-loader",
-                loader: "css-loader!sass-loader"
-            }) }
+                loader: "css-loader!sass-loader" }) },
+            { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader' }
         ]
     },
     resolve: {
@@ -47,7 +47,7 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin({
-            filename: "css/[name].css",
+            filename: "[name].css",
             allChunks: true
         }),
         new OptimizeCssAssetsPlugin()
