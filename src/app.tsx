@@ -2,9 +2,11 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 
 import { Navbar } from "./components/navbar";
-import { SplitView } from "./components/splitView";
+import { TestRoute } from "./routes/testRoute";
 
 import "./scss/app.scss";
+
+var view : "master" | "detail" | "both" = "master";
 
 ReactDom.render(
     <div className="row">
@@ -34,14 +36,7 @@ ReactDom.render(
                 }
             ]
         }}/>
-        <SplitView
-            state="master"
-            masterView={
-                <h1>Master</h1>
-            }
-            detailView={
-                <h1>Detail</h1>
-            }/>
+        <TestRoute/>
     </div>,
     document.getElementById("app")
 );
