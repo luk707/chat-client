@@ -1,14 +1,7 @@
 import * as React from "react";
 
-import { Container } from "../elements/container";
-import { Button } from "../elements/button";
-import { Text } from "../elements/text";
-import { Icon } from "../elements/icon";
-import { Flex } from "../elements/flex";
-
 export interface NavbarItem {
-    faIcon?: string;
-    avatarUrl?: string;
+    faIcon: string;
     label: string;
     onClick?: () => void;
 }
@@ -21,21 +14,21 @@ export interface NavbarButtonProps extends NavbarItem {
 export class NavbarButton extends React.Component<NavbarButtonProps, {}> {
     render() {
         return (
-            <Button onClick={this.props.onClick} classMap={{
-                navbarButton: true,
-                menu: this.props.menu
-            }}>
-                <Container classMap={{
-                    icon: true
-                }}>
-                    <Icon faIcon={this.props.faIcon}/>
-                </Container>
-                <Container classMap={{
-                    content: true
-                }}>
-                    <Text>{this.props.label}</Text>
-                </Container>
-            </Button>
+            <button onClick={this.props.onClick} className={["navbarButton", "menu"].filter((value => {
+                    switch (value) {
+                        case "menu":
+                            return this.props.menu;
+                        default:
+                            return true;
+                    }
+                })).join(" ")}>
+                <div className={["icon"].join(" ")}>
+                    <i className={["fa", `fa-${this.props.faIcon}`].join(" ")}></i>
+                </div>
+                <div className={["content"].join(" ")}>
+                    <span>{this.props.label}</span>
+                </div>
+            </button>
         );
     }
  }
@@ -62,13 +55,15 @@ export class Navbar extends React.Component<NavbarProps, NavbarState> {
 
     render() {
         return (
-            <Container classMap={{
-                navbarContainer: true
-            }}>
-                <Container classMap={{
-                    navbarCollapse: true,
-                    open: this.state.open
-                }}>
+            <div className={["navbarContainer"].join(" ")}>
+                <div className={["navbarCollapse", "open"].filter(value => {
+                        switch (value) {
+                            case "open":
+                                return this.state.open;
+                            default:
+                                return true;
+                        }
+                    }).join(" ")}>
                     <NavbarButton menu={true} onClick={() => { this.setState((state, props) => {
                             return {
                                 ...state,
@@ -78,49 +73,12 @@ export class Navbar extends React.Component<NavbarProps, NavbarState> {
                     {this.props.items.top.map((item) => {
                         return <NavbarButton onClick={item.onClick} {...item}></NavbarButton>;
                     })}
-                    <Flex></Flex>
+                    <div className={["flex"].join(" ")}/>
                     {this.props.items.bottom.map((item) => {
                         return <NavbarButton {...item}></NavbarButton>;
                     })}
-                </Container>
-            </Container>
+                </div>
+            </div>
         );
     }
-
-        /*test = <Container classMap={{
-                row: true,
-            }}>
-                <Container classMap={{
-                    column: true,
-                    navbar: true
-                }}>
-                    <NavbarIcon faIcon="bars"/>
-                    {this.props.items.top.map((item) => {
-                        return <NavbarIcon faIcon={item.faIcon}/>;
-                    })}
-                    <Container classMap={{flex: true}}/>
-                    {this.props.items.bottom.map((item) => {
-                        return <NavbarIcon faIcon={item.faIcon}/>;
-                    })}
-                </Container>
-                <Container classMap={{
-                        column: true,
-                        drawer: true,
-                        open: this.state.open
-                    }}>
-                    <NavbarButton heading={true} onClick={() => { this.setState((state, props) => {
-                            return {
-                                ...state,
-                                open: !state.open 
-                            }
-                        }); }} label="Menu"/>
-                    {this.props.items.top.map((item) => {
-                        return <NavbarButton heading={false} label={item.label}/>;
-                    })}
-                    <Container classMap={{flex: true}}/>
-                    {this.props.items.bottom.map((item) => {
-                        return <NavbarButton heading={false} label={item.label}/>;
-                    })}
-                </Container>
-            </Container>;*/
 }

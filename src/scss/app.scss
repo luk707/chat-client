@@ -1,5 +1,6 @@
 @import "./layout";
 @import "./navbar";
+@import "./splitView";
 
 * {
     font-family: 'Roboto', sans-serif;
@@ -13,4 +14,12 @@ body, html {
 #app {
     width: 100vw;
     height: 100vh;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
 }

@@ -50,11 +50,7 @@
         flex-grow: 1;
         display: flex;
     }
-    &:hover {
-        background-color: $primary-hover;
-    }
-
     &:active {
-        background-color: $primary-active;
+        background-color: $primary-select;
     }
 }
