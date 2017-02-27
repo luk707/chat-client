@@ -7,8 +7,10 @@ import { Icon } from "../elements/icon";
 import { Flex } from "../elements/flex";
 
 export interface NavbarItem {
-    faIcon: string;
+    faIcon?: string;
+    avatarUrl?: string;
     label: string;
+    onClick?: () => void;
 }
 
 export interface NavbarButtonProps extends NavbarItem {
@@ -74,7 +76,7 @@ export class Navbar extends React.Component<NavbarProps, NavbarState> {
                             }
                         }); }} label="Menu" faIcon="bars"/>
                     {this.props.items.top.map((item) => {
-                        return <NavbarButton {...item}></NavbarButton>;
+                        return <NavbarButton onClick={item.onClick} {...item}></NavbarButton>;
                     })}
                     <Flex></Flex>
                     {this.props.items.bottom.map((item) => {

@@ -4,7 +4,8 @@ import mapClasses, { ClassMap } from "./classMap";
 
 export interface IconProps {
     classMap?: ClassMap;
-    faIcon: string;
+    faIcon?: string;
+    url?: string;
 }
 
 export class Icon extends React.Component<IconProps, {}> {
@@ -12,15 +13,22 @@ export class Icon extends React.Component<IconProps, {}> {
         let classMap: ClassMap = {
             fa: true
         };
-        classMap[`fa-${this.props.faIcon}`] = true;
+        if (this.props.url !== undefined) {
+            console.log(this.props.url)
+            classMap = {};
+        } else if (this.props.faIcon !== undefined) {
+            classMap[`fa-${this.props.faIcon}`] = true;
+        } else {
+            classMap["fa-exclamation-triangle"] = true;
+        }
         return mapClasses({
             ...this.props.classMap,
             ...classMap
         });
     }
     render() {
-        return (
-            <i className={this.GetClass()}></i>
-        );
+        return this.props.url !== 'undefined' ?
+        <i className={this.GetClass()}></i> :
+        <img src={this.props.url} className={this.GetClass()}/>;
     }
 }

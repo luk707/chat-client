@@ -11,7 +11,7 @@
     width: 44px;
     height: 100%;
     overflow: hidden;
-    background-color: $neutral;
+    background-color: $primary;
     transition-duration: 0.25s;
     -webkit-transition-duration: 0.25s;
     &.open {
@@ -27,7 +27,8 @@
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: $neutral;
+    color: white;
+    background-color: $primary;
     transition-duration: 0.1s;
     -webkit-transition-duration: 0.1s;
     &.menu {
@@ -49,6 +50,10 @@
         display: flex;
     }
     &:hover {
-        background-color: $carbon;
+        background-color: $primary-hover;
+    }
+
+    &:active {
+        background-color: $primary-active;
     }
 }
