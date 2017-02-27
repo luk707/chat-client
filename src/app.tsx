@@ -1,12 +1,11 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
+import "./scss/app.scss";
+
 import { Navbar } from "./components/navbar";
 import { TestRoute } from "./routes/testRoute";
 
-import "./scss/app.scss";
-
-var view : "master" | "detail" | "both" = "master";
 
 ReactDom.render(
     <div className="row">
@@ -14,25 +13,25 @@ ReactDom.render(
             top: [
                 {
                     label: "User",
-                    faIcon: "user"
+                    icon: "face"
                 },
                 {
                     label: "Channels",
-                    faIcon: "comments"
+                    icon: "comment"
                 },
                 {
                     label: "Direct Messages",
-                    faIcon: "inbox"
+                    icon: "inbox"
                 }
             ],
             bottom: [
                 {
                     label: "Info",
-                    faIcon: "info-circle"
+                    icon: "info"
                 },
                 {
                     label: "Settings",
-                    faIcon: "sliders"
+                    icon: "settings"
                 }
             ]
         }}/>

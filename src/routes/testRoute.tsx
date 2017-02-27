@@ -34,9 +34,8 @@ export class TestRoute extends React.Component<{}, TestRouteState> {
                     }} title="Master"></Toolbar>
                     <div className={["padded"].join(" ")}>
                         <h1>Test View</h1>
-
                         <ul>
-                            { ([
+                            {([
                                 {
                                     title: "test 1",
                                     content: "This is the content for test 1."
@@ -59,7 +58,7 @@ export class TestRoute extends React.Component<{}, TestRouteState> {
                                         }} href="#">{detail.title}</a>
                                     </li>
                                 );
-                            }) }
+                            })}
                         </ul>
                     </div>
                 </div>
@@ -69,7 +68,7 @@ export class TestRoute extends React.Component<{}, TestRouteState> {
                     <Toolbar buttons={{
                         left: [
                             {
-                                faIcon: "chevron-left",
+                                icon: "chevron_left",
                                 onClick: () => {
                                     this.setState(currentState => {
                                         return {
@@ -82,15 +81,14 @@ export class TestRoute extends React.Component<{}, TestRouteState> {
                         ],
                         right: [
                             {
-                                faIcon: "user"
+                                icon: "person"
                             }
                         ]
-                    }} title="Detail"></Toolbar>
+                    }} title={this.state.detail ? this.state.detail.title : "Detail"}></Toolbar>
                     <div className={["padded"].join(" ")}>
                     {
                         this.state.detail ?
                         <div>
-                            <h1>{this.state.detail.title}</h1>
                             <p>{this.state.detail.content}</p>
                         </div>:
                         <h2>Error</h2>

@@ -1,15 +1,27 @@
 import * as React from "react";
 
-export interface ToolbarButton {
-    faIcon: String;
+import { Icon } from "../elements/icon";
+
+export interface ToolbarButtonProps {
+    icon: String;
     onClick?: () => void;
+}
+
+class ToolbarButton extends React.Component<ToolbarButtonProps, {}> {
+    render() {
+        return (
+            <button onClick={this.props.onClick}>
+                <Icon id={this.props.icon}/>
+            </button>
+        );
+    }
 }
 
 export interface ToolbarProps {
     title: String;
     buttons: {
-        left: ToolbarButton[]      
-        right: ToolbarButton[]  
+        left: ToolbarButtonProps[]      
+        right: ToolbarButtonProps[]  
     }
 }
 
@@ -18,23 +30,14 @@ export class Toolbar extends React.Component<ToolbarProps, {}> {
         return (
             <div className={["toolbar"].join(" ")}>
                 {this.props.buttons.left.map(button => {
-                    return (
-                        <button onClick={button.onClick}>
-                            <i className={["fa", `fa-${button.faIcon}`].join(" ")}></i>
-                        </button>
-                    );
+                    return <ToolbarButton {...button} />;
                 })}
-                <div className={["flex"].join(" ")}/>
                 <span className={["title"].join(" ")}>
                     {this.props.title}
                 </span>
                 <div className={["flex"].join(" ")}/>
                 {this.props.buttons.right.map(button => {
-                    return (
-                        <button onClick={button.onClick}>
-                            <i className={["fa", `fa-${button.faIcon}`].join(" ")}></i>
-                        </button>
-                    );
+                    return <ToolbarButton {...button} />;
                 })}
             </div>
         );

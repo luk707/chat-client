@@ -1,7 +1,9 @@
 import * as React from "react";
 
+import { Icon } from "../elements/icon";
+
 export interface NavbarItem {
-    faIcon: string;
+    icon: string;
     label: string;
     onClick?: () => void;
 }
@@ -23,7 +25,7 @@ export class NavbarButton extends React.Component<NavbarButtonProps, {}> {
                     }
                 })).join(" ")}>
                 <div className={["icon"].join(" ")}>
-                    <i className={["fa", `fa-${this.props.faIcon}`].join(" ")}></i>
+                    <Icon id={this.props.icon}/>
                 </div>
                 <div className={["content"].join(" ")}>
                     <span>{this.props.label}</span>
@@ -69,7 +71,7 @@ export class Navbar extends React.Component<NavbarProps, NavbarState> {
                                 ...state,
                                 open: !state.open 
                             }
-                        }); }} label="Menu" faIcon="bars"/>
+                        }); }} label="Menu" icon="menu"/>
                     {this.props.items.top.map((item) => {
                         return <NavbarButton onClick={item.onClick} {...item}></NavbarButton>;
                     })}
