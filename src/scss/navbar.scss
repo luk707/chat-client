@@ -25,9 +25,10 @@
     height: 44px;
     width: 200px;
     border: none;
-    outline: none;
     cursor: pointer;
     color: white;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
     background-color: $primary;
     transition-duration: 0.1s;
     -webkit-transition-duration: 0.1s;
